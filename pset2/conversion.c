@@ -13,14 +13,16 @@ int main()
   lower = 0;    /* lower temp of the range. */
   upper = 300;  /* upper range of temp.  */
   step = 20;    /* unit of steps between lower to upper temps. */
-
   fahr = lower;  
+
   /* Add Table Heading */
-  printf("%3.0s\n", "Fahrenheit");
+  printf("%s\t%s\n", "Fahrenheit", "Celsius");
+  printf("=======================\n"); /* heading1 + heading2 + tab(8) = 15 */
+  /* Display conversion chart */
   while(fahr <= upper)
   {
     cels = ( 5.0 / 9.0 ) * (fahr - 32.0);
-    printf("%10.0f\t%6.1f\n", fahr, cels);
+    printf("%10.0f\t%7.1f\n", fahr, cels);
     fahr += step;
   }
 }
