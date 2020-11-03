@@ -12,4 +12,5 @@ management, and staticlly typed languages.
 for 0..300 in Fahrenheit and Celsius during the conversion on and displaying in
   the command line.
 
-1. Exercise 1: Modify the temp conversion program to print a heading above the table.
+[X] 1. **Exercise 1:** Modify the temp conversion program to print a heading above the table.
+[X] 2. **Exercise 2:** Build a program to convert cesius temperatures to Fahrenheit. (see conversion\_fahr.c)
