@@ -14,3 +14,6 @@ for 0..300 in Fahrenheit and Celsius during the conversion on and displaying in
 
 - [X] 1. **Exercise:** Modify the temp conversion program to print a heading above the table.
 - [X] 2. **Exercise:** Build a program to convert cesius temperatures to Fahrenheit. (see conversion\_fahr.c)
+- [ ] 3. **Exercise:** Modify the temperature conversion table to print degrees 300 to 0.
+
+
