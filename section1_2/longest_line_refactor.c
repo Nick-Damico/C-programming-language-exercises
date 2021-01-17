@@ -1,6 +1,11 @@
 #include <stdio.h>
 #define MAXLINE 1000 /* Maximum input line length */
 
+/* Refactor exercises:
+ * [X] Revise Main routine to print length of 
+ *  arbitrarily long lines, and as much of the input as
+ *  possible.
+ * */
 
 int readline(char line[], int maxline);
 void copy(char to[], char from[]);
@@ -19,6 +24,8 @@ int main(void)
       max = len;
       copy(longest, line);
     }
+  if (max > MAXLINE)
+    printf("Maxline exceeded: %d\n", max);
   if (max > 0)
     printf("%s", longest);
   
