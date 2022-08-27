@@ -19,6 +19,12 @@ int main(void)
     int bs = 0;
     char prev_char, cur_char;
 
+    /*
+    Hello World
+
+    Goodbye World.
+    */
+
     while ((cur_char = getchar()) != EOF)
     {
         // If 1st character is a newline; Skip printing and move to the next line.
@@ -64,17 +70,7 @@ int main(void)
             continue;
         }
 
-        if (cur_char == ' ')
-        {
-            if (bs == 0)
-            {
-                putchar(prev_char);
-                prev_char = cur_char;
-            }
-            bs++;
-            continue;
-        }
-        else
+        if (cur_char != ' ')
         {
             while (bs > 0)
             {
@@ -84,6 +80,16 @@ int main(void)
             if (prev_char != ' ')
                 putchar(prev_char);
             prev_char = cur_char;
+        }
+        else
+        {
+            if (bs == 0)
+            {
+                putchar(prev_char);
+                prev_char = cur_char;
+            }
+            bs++;
+            continue;
         }
     }
 
