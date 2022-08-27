@@ -12,30 +12,24 @@
 
 int main(void)
 {
-    int in_single_comment = 0;
+    int in_single_line_comment = 0;
     int in_multiline_comment = 0;
     int blank_line = 0;
     int bs = 0;
     char prev_char, cur_char;
 
-    /*
-    Hello World
-
-    Goodbye World.
-    */
-
     while ((cur_char = getchar()) != EOF)
     {
-        if (in_single_comment)
+        // Exit if at the end of a single or multiline comment.
+        if (in_single_line_comment)
         {
             // Detect end of comment.
             if (cur_char == '\n')
-                in_single_comment = 0;
+                in_single_line_comment = 0;
 
             prev_char = cur_char;
             continue;
         }
-
         if (in_multiline_comment)
         {
             // Detect end of comment.
@@ -51,7 +45,7 @@ int main(void)
         // Detect Comment and Set flag if in a single or multi line comment.
         if (prev_char == '/' && cur_char == '/')
         {
-            in_single_comment = 1;
+            in_single_line_comment = 1;
             bs = 0;
             continue;
         }
@@ -62,6 +56,7 @@ int main(void)
             continue;
         }
 
+        // Print Non-commented characters or whitespace.
         if (cur_char != ' ')
         {
             while (bs > 0)
