@@ -12,7 +12,6 @@
 
 int main(void)
 {
-    int pos = 0;
     int in_single_comment = 0;
     int in_multiline_comment = 0;
     int blank_line = 0;
@@ -27,13 +26,6 @@ int main(void)
 
     while ((cur_char = getchar()) != EOF)
     {
-        // If 1st character is a newline; Skip printing and move to the next line.
-        if (pos == 0 && cur_char == '\n') // TEST: THIS SHOULD NOT PRINT!!
-            continue;
-
-        if (pos == 0 && cur_char != '\n') /* TEST: THIS MULTI SINGLE LINE SHOULD NOT PRINT!! */
-            pos = 1;
-
         if (in_single_comment)
         {
             // Detect end of comment.
