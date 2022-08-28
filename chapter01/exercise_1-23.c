@@ -12,11 +12,10 @@
 
 int main(void)
 {
-    int in_single_line_comment = 0;
-    int in_multiline_comment = 0;
-    int blank_line = 0;
     int bs = 0;
     char prev_char, cur_char;
+    int in_single_line_comment = 0;
+    int in_multiline_comment = 0;
 
     while ((cur_char = getchar()) != EOF)
     {
@@ -47,12 +46,14 @@ int main(void)
         {
             in_single_line_comment = 1;
             bs = 0;
+            prev_char = cur_char;
             continue;
         }
         if (prev_char == '/' && cur_char == '*')
         {
             in_multiline_comment = 1;
             bs = 0;
+            prev_char = cur_char;
             continue;
         }
 
