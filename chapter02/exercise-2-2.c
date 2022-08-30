@@ -1,18 +1,18 @@
 /*
- *    Author:    Nick D'Amico
- *    Date:      8/31/22
- *    Exercise:  2-2
- *    Objective: Write a loop equivalent to the for loop
- *               `i<lim-1 && (c = getchar()) != '\n' && c != EOF`
- *               without using && or ||.
+ *  Author:    Nick D'Amico
+ *  Date:      8/31/22
+ *  Exercise:  2-2
+ *  Objective: Write a loop equivalent to the for loop
+ *             `i<lim-1 && (c = getchar()) != '\n' && c != EOF`
+ *             without using && or ||.
  * 
- *    Solution: See lines start on 39.
+ *  Solution: See lines start on 39.
+ *      
+ *  Notes:  && and || operators evaulate left to right, as soon as
+ *          truth or falsehood of the result is know the evaluation stops.
  *
- *   && and || operators evaulate left to right, as soon as
- *   truth or falsehood of the result is know the evaluation stops.
- *
- *   By definition, the numeric value of a relational or logical expression is 1
- *   if the relation is true, and 0 if the relation is false.
+ *          By definition, the numeric value of a relational or logical expression is 1
+ *          if the relation is true, and 0 if the relation is false.
  */
 
 #include <stdio.h>

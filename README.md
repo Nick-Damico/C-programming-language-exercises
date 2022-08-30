@@ -85,6 +85,14 @@ enum escapes { BELL = '\a', BACKSPACE = '\b', TAB = '\t' };
 enum months { JAN = 1, FEB, MAR, APR, MAY, JUNE, JULY, AUG, SEPT, NOV, DEC };
 ```
 
+## Arithmetic Operators
+**Basics**  
+:*+, -, *, /*
+
+**Precedence**  
+:*+, - operators are the same.*  
+:*\*, / - operators are higher than the plus or minus.*
+
 ### Misc
 - **double quotes** enclosed word is a **character constant**.
 - Arguments in *C programming* are pass by reference
