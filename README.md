@@ -49,6 +49,42 @@ NOTE: **Signed** and **Unsigned** may be applied to char or any integer. They ob
 */
 ```
 
+## Constants
+Refer to a **fixed** value that the program **may not** alter during it's execution, *aka* *literals*.
+
+**Integer Literals**  
+: *These can be whole, decimal, octal, or hexadecimal.*
+```C
+// Examples
+/*
+*   integer constant    1234;
+*   long constant       123l or 123L; 
+*   unsigned const      123u or 123U can be modified with Long 123UL;
+*   float const         123.4f or 1e-2 these are doubles;
+*   octal               08;
+*   hexadecimal         0xFF;
+*
+*   0xFUL               Hexadecimal, Unsigned, Long constant. 16;
+*/
+```
+
+**String Constant or Literal**  
+:*is a sequence of zero or more characters surrounded by double quotes.*
+
+**Character Constant or Literal**  
+:*is a an integer, that maps to the machines character set i.e. ASCII and is written surrounded by single quotes.*
+
+**Enumeration Constant**  
+:*is a list of constant integer values.*
+```c
+// first name in an enum has value 0, then 1, and  so on.
+// Unless specific values are specified.
+enum boolean { NO, YES };
+enum escapes { BELL = '\a', BACKSPACE = '\b', TAB = '\t' };
+// The first name starts at 1 not 0; All subsequent names will increment FEB = 2, MAR = 3, and so on.
+enum months { JAN = 1, FEB, MAR, APR, MAY, JUNE, JULY, AUG, SEPT, NOV, DEC };
+```
+
 ### Misc
 - **double quotes** enclosed word is a **character constant**.
 - Arguments in *C programming* are pass by reference
