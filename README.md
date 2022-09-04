@@ -11,8 +11,8 @@ Working through most of the exercises outlined in the C Programming Language Boo
 - [x] Detab program:    `/chapter01/exercise_1-21.c`.
 - [x] Comment remover:  `/chapter01/exercise_1-23.c`.
 ### Chapter 02
-- [x] Data Type Ranges:    `/chapter02/exercise-2-1.c`.
-- [x] ???:    `/chapter02/exercise-2-2.c`.
+- [x] Data Type Ranges:                         `/chapter02/exercise-2-1.c`.
+- [ ] Covert string hexadecmial to integer:     `/chapter02/exercise-2-2.c`.
 
 ## General Notes
 
@@ -90,8 +90,16 @@ enum months { JAN = 1, FEB, MAR, APR, MAY, JUNE, JULY, AUG, SEPT, NOV, DEC };
 :*+, -, *, /*
 
 **Precedence**  
-:*+, - operators are the same.*  
-:*\*, / - operators are higher than the plus or minus.*
+:*`+, -` operators are the same.*  
+:*`*, /` - operators are higher than the plus or minus.*
+:*`== or !=` is higher than assignment operations like `c = getchar()`* 
+
+## Type Coversions
+If an **operator** has different **operands** of different types a *small number of rulles* are used to convert those to a *common type*.
+
+Converting an *integer* to *float* like with `f + i`.
+
+*chars* remember are just integers mapped to the systems machine code so those are used freely with arithmetic expressions.
 
 ### Misc
 - **double quotes** enclosed word is a **character constant**.
@@ -101,3 +109,12 @@ enum months { JAN = 1, FEB, MAR, APR, MAY, JUNE, JULY, AUG, SEPT, NOV, DEC };
 - **Variables and Constants** are the basic data manipulated in a program. **Declarations** list the variables to be used. **Operators** specify what is to be done with them, and **Expressions** combine the variables and constants to produce new values.
 - **signed**  :*are number less than zero and/or greater than zero.*
 - **unsigned**  :*are numbers always positive or zero.*
+
+## Helpful Functions
+
+```c
+#include <ctype.h>
+// tolower(c)
+
+// isdigit(c)
+```
