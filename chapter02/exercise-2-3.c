@@ -73,6 +73,8 @@ int htoi(char s[], int len) {
             n = s[i] - '0';         // Convert char number to correct integer value.
         else if (s[i] >= 'a' && s[i] <= 'f' )
             n = s[i] - 'a' + 10;
+        else if (s[i] >= 'A' && s[i] <= 'f' )
+            n = s[i] - 'A' + 10;
 
         power = (len - i) - 1;  // Calculate current number position for raising x to correct power.
 
