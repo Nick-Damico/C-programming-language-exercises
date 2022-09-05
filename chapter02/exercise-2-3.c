@@ -63,25 +63,21 @@ int isHex(char s[]) {
 */
 int htoi(char s[], int len) {
     int n;
-    int i = 2;  // Skip first 2 characters; Delimiter for hexadecimal number ox.
     int power = 0;
     int value = 0;
 
-    while(s[i] != '\0')
+    for(int i = 2; s[i] != '\0'; ++i)
     {
+        // Convert hex char number to correct integer value.
         if (isdigit(s[i]))
-            n = s[i] - '0';         // Convert char number to correct integer value.
+            n = s[i] - '0';
         else if (s[i] >= 'a' && s[i] <= 'f' )
             n = s[i] - 'a' + 10;
         else if (s[i] >= 'A' && s[i] <= 'f' )
             n = s[i] - 'A' + 10;
 
         power = (len - i) - 1;  // Calculate current number position for raising x to correct power.
-
-        // printf("for digit %d, length is %d\n", n, power);
-        // printf("power of %d: %f\n", n, n * pow(16, power));
         value = value + (n * pow(16, power));
-        ++i;
     }
     return value;
 }
