@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <ctype.h>
 
 #define MAXLENGTH 100
 
@@ -29,7 +30,7 @@ int main(void) {
     char line[MAXLENGTH];
 
     while((len = readline(line)) > 0) {
-        printf("check hexadecimal: %d\n", isHex(line));
+        printf("hex length: %d\n", len);
         if (isHex(line))
             printf("%d\n", htoi(line, len));
         else
@@ -61,16 +62,26 @@ int isHex(char s[]) {
 *   length might be len -2.
 */
 int htoi(char s[], int len) {
+    int n;
     int i = 2;  // Skip first 2 characters; Delimiter for hexadecimal number ox.
-    int n = 0;
+    int power = 0;
+    int value = 0;
 
-    while(s[i] != '\n')
+    while(s[i] != '\0')
     {
-        // Get the numbers place (length - 1) currentValue of i.
-        n = n + pow(16, (len-1) - i);
+        if (isdigit(s[i]))
+            n = s[i] - '0';         // Convert char number to correct integer value.
+        else if (s[i] >= 'a' && s[i] <= 'f' )
+            n = s[i] - 'a' + 10;
+
+        power = (len - i) - 1;  // Calculate current number position for raising x to correct power.
+
+        // printf("for digit %d, length is %d\n", n, power);
+        // printf("power of %d: %f\n", n, n * pow(16, power));
+        value = value + (n * pow(16, power));
         ++i;
     }
-    return n;
+    return value;
 }
 
 int readline(char s[]) {
@@ -78,9 +89,6 @@ int readline(char s[]) {
 
     for (i = 0; i < MAXLENGTH - 1 && (c = getchar()) != EOF && c != '\n'; i++)
         s[i] = c;
-
-    if (c == '\n') 
-        s[i++] = c;
 
     s[i] = '\0';
 
