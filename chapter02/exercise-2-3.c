@@ -75,8 +75,8 @@ int htoi(char s[], int len) {
         else if (s[i] >= 'A' && s[i] <= 'F' )
             n = s[i] - 'A' + 10;
 
-        power = (len - i) - 1;  // Calculate current number position for raising x to correct power.
-        value = value + (n * pow(16, power));
+        power = len - i - 1;  // Calculate current number position for raising x to correct power.
+        value = value + n * pow(16, power);
     }
     return value;
 }
