@@ -13,9 +13,12 @@ Working through most of the exercises outlined in the C Programming Language Boo
 ### Chapter 02
 - [x] Data Type Ranges:                         `/chapter02/exercise-2-1.c`.
 - [x] Refactor #readline function to not use `&&` or `||` operators:     `/chapter02/exercise-2-2.c`.
-- [x] Covert string hexadecmial to integer:     `/chapter02/exercise-2-3.c`. compile: `cc exercise-2-3.c -lm`
+- [x] Covert string hexadecmial to integer:     `/chapter02/exercise-2-3.c`.
+  - compile with command: `cc exercise-2-3.c -lm`
 
 ## General Notes
+
+Current Section is 2.8.
 
 ### Data Types
 **Char**  
@@ -98,9 +101,28 @@ enum months { JAN = 1, FEB, MAR, APR, MAY, JUNE, JULY, AUG, SEPT, NOV, DEC };
 ## Type Coversions
 If an **operator** has different **operands** of different types a *small number of rulles* are used to convert those to a *common type*.
 
+- Automatic conversions are narrower operands to wider ones. Integer to Float -> Float to Double.
+- 
 Converting an *integer* to *float* like with `f + i`.
 
-*chars* remember are just integers mapped to the systems machine code so those are used freely with arithmetic expressions.
+Check out the **standard header `<ctype.h>`, a family of functions that provide tests and coversion functions.
+NOTE: *chars* remember are just integers mapped to the systems machine code so those are used freely with arithmetic expressions.
+
+\*\*The main reason for using **float** is to save storage in large arrays, or, less often, to save time on machines where double-precision arithmetic is particularly expensive.
+
+\*\*Arguments of a function call are expressions, so type conversions also take place when args are passed to a function.
+
+\*\*Explicit conversion can be force ("coerced") in any expression, with a unary operator called a **cast**. Example:
+```c
+float n;
+int i;
+i * (int)n; // Explicit coercing with casting.
+
+// sqrt expects a double we can use casting for this.
+int i = 10;
+sqrt((double) n);
+```
+
 
 ### Misc
 - **double quotes** enclosed word is a **character constant**.
