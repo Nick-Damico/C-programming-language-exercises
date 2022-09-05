@@ -30,7 +30,6 @@ int main(void) {
     char line[MAXLENGTH];
 
     while((len = readline(line)) > 0) {
-        printf("hex length: %d\n", len);
         if (isHex(line))
             printf("%d\n", htoi(line, len));
         else
@@ -48,18 +47,18 @@ int isHex(char s[]) {
 /*
 *   Coversion Math Hexadecimal to Integer
 *   2           8
-*   (16 * 2)    (8 * 1)
-*   0x28 == 40(int)
 *   f = (2 x 16^1) + (8 x 16^0)
-*   (2 * power(16,2)) + (8 * power(16, 0))
+*   f = n += (currentValue * pow(16, currentPosition))
 *
 *   What is the length of the string?
 *   28 is a length of 2;
-*   Start counter at the len = 2;
-*   Calculate the first hexadecimal number power(2 * power(16,2))
+*   Start counter (i) at the len = 2;
+*   What is the current number position of the integer 2?
+*   2 == 1
+*   8 == 0
+*   power = stringLength - (i) - 1
+*   Calculate the first hexadecimal number power(currentValue * power(16,power))
 *
-*   We might need to account for the suffix Ox or OX, so
-*   length might be len -2.
 */
 int htoi(char s[], int len) {
     int n;
@@ -67,7 +66,7 @@ int htoi(char s[], int len) {
     int value = 0;
 
     for(int i = 2; s[i] != '\0'; ++i)
-    {
+    {         
         // Convert hex char number to correct integer value.
         if (isdigit(s[i]))
             n = s[i] - '0';
