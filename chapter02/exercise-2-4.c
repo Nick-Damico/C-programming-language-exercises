@@ -25,6 +25,8 @@ int main(void)
     char s2[MAXLEN];
     readline(s1);
     readline(s2);
+    printf("s1 is %s\n", s1);
+    printf("s2 is %s\n", s2);
 
     ssqueeze(s1, s2);
     printf("%s\n", s1);
@@ -42,6 +44,35 @@ void readline(char s[])
     s[i] = '\0';
 }
 
+/*
+*   This would be better than 0(n^2) if I used a
+*   charmap.
+*/
 void ssqueeze(char s1[], char s2[])
 {
+    int i, j;
+    int pos = 0;    // Track current position to write non-found character.
+    short found;    // Flag if character is found in string2; These should not be written.
+
+    while (s1[i] != '\0')
+    {
+        found = 0;
+        j = 0;
+
+        while (s2[j] != '\0')
+        {
+            if (s1[i] == s2[j++])
+            {
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            s1[pos++] = s1[i];
+        }
+        i++;
+    }
+    s1[pos] = '\0';
 }
