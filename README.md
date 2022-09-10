@@ -15,7 +15,8 @@ Working through most of the exercises outlined in the C Programming Language Boo
 - [x] Refactor #readline function to not use `&&` or `||` operators:     `/chapter02/exercise-2-2.c`.
 - [x] Covert string hexadecmial to integer:     `/chapter02/exercise-2-3.c`.
   - compile with command: `cc exercise-2-3.c -lm`
-- [ ] Write an alternate version of `squeeze(s1, s2)`:  `/chapter02/exercise-2.4.c`
+- [x] Write an alternate version of `squeeze(s1, s2)`:  `/chapter02/exercise-2.4.c`
+- [x] Write a version of `any(s1, s2)`:  `/chapter02/exercise-2.5.c`
 
 ## General Notes
 
@@ -136,9 +137,4 @@ sqrt((double) n);
 
 ## Helpful Functions
 
-```c
-#include <ctype.h>
-// tolower(c)
-
-// isdigit(c)
-```
+Header  : `ctype.h`
