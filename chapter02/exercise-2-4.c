@@ -8,10 +8,13 @@
  *  Example:    s1 = 'Hello', s2 = 'Howdy'
  *              output -> 'ello'
  * 
- *  Solution: 
- *      
- *  Notes:  
+ *  Solution:   Nested Loop for each char of s1 loop through s2 full char collection. If
+ *              if a match is found do not write the character. Only write a character if it
+ *              is not found within s2. 
  *          
+ * TODO:        - [ ] Matching should be case-insensitive.
+ *              - [ ] Use a data structure like a charmap for matching to improve time complexity.
+ * 
  */
 
 #include <stdio.h>
@@ -25,8 +28,6 @@ int main(void)
     char s2[MAXLEN];
     readline(s1);
     readline(s2);
-    printf("s1 is %s\n", s1);
-    printf("s2 is %s\n", s2);
 
     ssqueeze(s1, s2);
     printf("%s\n", s1);
