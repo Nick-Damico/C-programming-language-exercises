@@ -39,6 +39,7 @@ int main(void)
     *   n is number of bits we will be targeting, so p + n will be our bit range.
     *   n = 2;
     *   
+    *   Example of getbits:
     *   x shifted right (p+1-n)
     *           4 3 2 1 0 ( positions ) 
     *   x = 24; 1 1 0 0 0 ( starting position)
@@ -48,27 +49,44 @@ int main(void)
     *             0 0 1 1 ( Result is 3 )     
     *   
     * 
-    *   y is the source of the updated bit for setting x.
-    *   y = 42;  1 0 1 0 1 0
-    *            5 4 3 2 1 0 ( positions )
-    *            - - -       -> bit to modify x by ( 101 )
-    *           
-    *   setbits(28, 3, 2, 42) == 26(11010)
+    *   Example of setbits:
+    *   p = 3, n = 2
+    *           7 6 5 4 3 2 1 0 ( positions ) 
+    *   y = 0  (0 0 0 0 0 0 0 0) 
+    *                       - -  ( right most bits of y)
+    *                   1 0 0 0  ( right shift ~0 ) 
+    *                   0 1 1 1  ( then flip ~0 ) 
+    *                   0 0 0 0  ( Result would be zero )
+    * 
+    *   y = 3  (0 0 0 0 0 0 1 1) 
+    *                       - -  ( right most bits of y)
+    *                   0 1 0 0  ( right shift ~0 ) 
+    *                   1 0 1 1  ( then flip ~0 ) 
+    *                   0 0 1 1  ( Result would be 3 )
+    * 
+    *           7 6 5 4 3 2 1 0  ( positions ) 
+    *   x = 24 (1 1 1 1 1 1 1 1)
+    *                   -        ( right most bits of y)
+    *                   0 1 0 0  ( right shift ~0 ) 
+    *                   1 0 1 1  ( then flip ~0 ) 
     */
     int x = 24;
     int p = 3;
     int n = 2;
-    // int y = 42;
-    // printf("Result: %d\n", setbits(x,p,n,y));
+    int y = 0;
+    printf("Result: %d\n", setbits(x,p,n,y));
     printf("Result: %d\n", getbits(x,p,n));
     return 0;
 }
 
 int setbits(int x, int p, int n, int y)
 {
-    return 0;
+    return y & ~(~0 << n);
 }
 
+/*
+*   Borrowed from C programming book as a test example.
+*/
 unsigned getbits(unsigned x, int p, int n)
 {
     return ((x >> (p+1-n)) & ~(~0 << n));
