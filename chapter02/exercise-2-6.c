@@ -52,17 +52,12 @@ int main(void)
     *   Example of setbits:
     *   p = 3, n = 2
     *           7 6 5 4 3 2 1 0 ( positions ) 
-    *   y = 0  (0 0 0 0 0 0 0 0) 
+    *   y = 7  (0 0 0 0 0 1 1 1) 
     *                       - -  ( right most bits of y)
-    *                   1 0 0 0  ( right shift ~0 ) 
-    *                   0 1 1 1  ( then flip ~0 ) 
-    *                   0 0 0 0  ( Result would be zero )
-    * 
-    *   y = 3  (0 0 0 0 0 0 1 1) 
-    *                       - -  ( right most bits of y)
-    *                   0 1 0 0  ( right shift ~0 ) 
-    *                   1 0 1 1  ( then flip ~0 ) 
-    *                   0 0 1 1  ( Result would be 3 )
+    *                   0 0 0 1  ( ~0 ) 
+    *                   0 1 0 0  ( << left shift ) 
+    *                   1 0 1 1  ( then flip result of shift ) 
+    *               &   0 0 1 1  ( bitwise & y == 3 )
     * 
     *           7 6 5 4 3 2 1 0  ( positions ) 
     *   x = 24 (1 1 1 1 1 1 1 1)
