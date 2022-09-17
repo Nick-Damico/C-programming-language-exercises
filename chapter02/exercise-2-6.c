@@ -28,33 +28,7 @@ int main(void)
 {
     /*
     *   Helpful visualization:
-    *   x is our target number for setbits and returned value.
-    *           4 3 2 1 0 ( positions ) 
-    *   x = 28; 1 1 1 0 0
-    *             - - -   -> bit to modify are ( 110 )  
     * 
-    *   p is our position indicator.
-    *   p = 3; 
-    *   
-    *   n is number of bits we will be targeting, so p + n will be our bit range.
-    *   n = 2;
-    *   
-    *   Example of getbits:
-    *   x shifted right (p+1-n)
-    *           4 3 2 1 0 ( positions ) 
-    *   x = 24; 1 1 0 0 0 ( starting position)
-    *   x = 07; 0 0 1 1 0 ( after shift )
-    *   ~(~0 << n)1 0 1 1 ( Generate bit mask )
-    *            ---------
-    *             0 0 1 1 ( Result is 3 )     
-    * 
-    *   we do not care about the n bits of x,
-    *   we want to remove those and replace with y n bits.
-    *   We can x 111 y 010 & == 0 1 0
-    *   We need to flip them to on or 1.
-    *   
-    * 
-    *   Example of setbits:
     *   p = 3, n = 2
     *   Get y n bits
     *   -----------------------------------------
@@ -63,6 +37,7 @@ int main(void)
     *                       - -  ( right most n bits of y)
     *           0 0 0 0 0 0 0 1  ( ~0 ) 
     *           0 0 0 0 0 1 0 0  ( << left shift n bits (y << n)) 
+    *                   0 0 1 1  ( then flip result of shift ~0) 
     *                   0 0 1 1  ( then flip result of shift ~0) 
     *               &   0 0 1 1  ( bitwise & y == 3 )
     * 
@@ -85,6 +60,28 @@ int main(void)
     *                   - -      ( find our range )
     *                   1 1 0 0  ( shift y mask )
     * 
+    *   Use clear? x bits
+    *   -----------------------------------------
+    *           7 6 5 4 3 2 1 0  ( positions ) 
+    *   x = 28 (0 0 0 1 1 1 0 0)
+    *                   - -      ( find our range )
+    *                   0 0 0 1  ( ~0 flip(1) bits )
+    *           0 0 0 0 0 1 0 0  ( << shift bits )
+    *           0 0 0 0 0 0 1 1  ( flip(2) )
+    *           0 0 0 0 1 1 0 0  ( shift )
+    *           1 1 1 1 0 0 1 1  ( ~0 fip(3) bits again )
+    *         & 0 0 0 1 1 1 0 0  
+    *           0 0 0 1 0 0 0 0  ( result == 16 )
+    * 
+    * 
+    *   Replace x bits at pos p with y bits
+    *   -----------------------------------------
+    *           7 6 5 4 3 2 1 0  ( positions ) 
+    *   x = 28 (0 0 0 1 0 0 0 0)
+    *                   - -      ( find our range )
+    *   y(mask)(0 0 0 0 1 1 0 0)
+    *   |       0 0 0 1 1 1 0 0  (result is 28)
+    *   
     */
     int x = 28;
     int p = 3;
@@ -97,12 +94,7 @@ int main(void)
 
 int setbits(int x, int p, int n, int y)
 {
-    //  1. get y n bits.
-    // return y & ~(~0 << n);
-
-    //  2. get x n bits from pos p.
-    // return x & ~(~0 << n) << n;
-    return x & ((y & ~(~0 << n)) << n);
+    return x & ~(~(~0 << n) << (p + 1 - n)) | (y & (~(~0 << n))) << (p + 1 - n);
 }
 
 /*
