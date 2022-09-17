@@ -69,16 +69,15 @@ int main(void)
     *   Get x n bits
     *   -----------------------------------------
     *           7 6 5 4 3 2 1 0  ( positions ) 
-    *   x = 24 (0 0 0 1 1 0 0 0)
-    *                   - - -    ( find our range )
-    *                   0 0 0 1  ( make mask ~0 ) 
-    *                     1 1 1  ( << left shift p ) 
-                      0 1 1 1 0  ( << push once more ) 
-    *                 0 1 1 1 0  ( bitwise | ) 
-                    0 1 1 0 0 0  ( result would be)
-                0 0 0 1 1 1 1 0  = 30
+    *   x = 28 (0 0 0 1 1 1 0 0)
+    *                   - -      ( find our range )
+    *                   0 0 0 1  ( ~0 ) 
+    *                     1 0 0  ( << left shift n ) 
+    *                     0 1 1  ( flip mask ~0 ) 
+    *                 0 1 1 0 0  ( << left shift to pos ) 
+    *               & 0 1 1 0 0  = 12
     */
-    int x = 24;
+    int x = 28;
     int p = 3;
     int n = 2;
     int y = 7;
@@ -90,11 +89,10 @@ int main(void)
 int setbits(int x, int p, int n, int y)
 {
     //  1. get y n bits.
-    return y & ~(~0 << n);
-
-    // get x make mask
-    // return x & (~(~0 << p)) << 1;
     // return y & ~(~0 << n);
+
+    //  2. get x n bits from pos p.
+    return x & ~(~0 << n) << n;
 }
 
 /*
