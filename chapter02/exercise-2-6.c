@@ -76,6 +76,15 @@ int main(void)
     *                     0 1 1  ( flip mask ~0 ) 
     *                 0 1 1 0 0  ( << left shift to pos ) 
     *               & 0 1 1 0 0  = 12
+    * 
+    *   Use y mask to getbits of x at pos( p )
+    *   -----------------------------------------
+    *           7 6 5 4 3 2 1 0  ( positions ) 
+    *   x = 28 (0 0 0 1 1 1 0 0)
+    *   y(mask)(0 0 0 0 0 0 1 1)
+    *                   - -      ( find our range )
+    *                   1 1 0 0  ( shift y mask )
+    * 
     */
     int x = 28;
     int p = 3;
@@ -92,7 +101,8 @@ int setbits(int x, int p, int n, int y)
     // return y & ~(~0 << n);
 
     //  2. get x n bits from pos p.
-    return x & ~(~0 << n) << n;
+    // return x & ~(~0 << n) << n;
+    return x & ((y & ~(~0 << n)) << n);
 }
 
 /*
