@@ -1,6 +1,4 @@
 # C-programming-language-exercises
-## Goal
-
 Working through most of the exercises outlined in the C Programming Language Book.
 - Build a better understanding of programming fundatmentals.
 - Understand Pointers and memory management.
