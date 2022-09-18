@@ -17,6 +17,7 @@ Working through most of the exercises outlined in the C Programming Language Boo
   - compile with command: `cc exercise-2-3.c -lm`
 - [x] Write an alternate version of `squeeze(s1, s2)`:  `/chapter02/exercise-2.4.c`
 - [x] Write a version of `any(s1, s2)`:  `/chapter02/exercise-2.5.c`
+- [x] Write a method `setbits(x,p,n,y)`:  `/chapter02/exercise-2.6.c`
 
 ## General Notes
 
@@ -124,7 +125,94 @@ i * (int)n; // Explicit coercing with casting.
 int i = 10;
 sqrt((double) n);
 ```
+# Bitwise Operators
+Only ally to integral operands, operands are the left-hand, right-hand values of an operation.
+short, int, long, char signed and unsigned.
 
+**What is a bitwise operator?**
+  : Does bitwise manipulation.
+
+**What is bitwise AND**
+  : And takes two numbers and perform bitwise AND, result is 1 when both bits are 1.
+  : Result is 1 when both bits are 1.
+
+**What is bitwise OR (inclusive)**
+  : And takes two numbers and perform bitwise AND
+  : Either A is 1, or B is 1, or both are 1, the output is 1. Includes both values. 
+
+**What is bitwise OR (exclusive)**
+  : And takes two numbers and perform bitwise AND
+  : Either A is 1 or B is 1 then output is 1 but when A and B are 1 then output is 0. Excluding Both.
+  : For Example: `7(0000 0111) ^ 4(0000 0100) == 3(0000 0011)`
+
+```c
+int a = 4, b = 3;
+a(7(0000 0111)) == 4(0000 0100) ^ 3(0000 0011)
+b(4(0000 0100)) == 7(0000 0111) ^ 3(0000 0011)
+a(3(0000 0011)) == 7(0000 0111) ^ 4(0000 0100)
+a == 3
+b == 4
+```
+1(0001) & 2(0010) -> 0000
+
+**What is bitwise NOT**
+  : Unary because only one operand is needed.
+  : Result 1 == 0.
+  : Result 0 == 1.
+  : Example: ~7 == 8
+  ```c
+    7 -> 0111
+    8 -> 1000
+    ---------
+    ~7 == 1000 -> 8
+  ```
+
+**What is left shift operator?**
+  : Require 2 operands.
+  : First Operand( whose bits get left shifted.)
+  : Second Operand( Decides the number of places to shift the bits.)
+  : When bits are shifted left trailing positions are filled with zeros.
+  : Is equivalent to multiplication by `2^rightOperand`
+  ```c
+  char var 3; // (0000 0011)
+  var<<1      // Left shift by 1 -> (0000 0011) -shift-> (0000 0110) == 6.
+  /*
+  * Using the multiplication above [leftOperand * 2^rightOperand]
+  *                                [3 * 2^1] == 6
+  */
+  ```
+
+**What is right shift operator?**
+  : Require 2 operands.
+  : First Operand( whose bits get right shifted.)
+  : Second Operand( Decides the number of places to shift the bits.)
+  : When bits are shifted left leading positions are filled with zeros.
+  : Is equivalent to division by the `2^rightOperand`
+  ```c
+  char var 3;
+  var>>1; 
+  /*
+  * [3 / 2^1] -> 3
+  *
+  * Example: 2.
+  * var = 32;
+  * var >> 4;
+  * [32 / 2^4] -> [32 / 16] -> 2;
+  */
+  ```
+
+**What is the difference between bitwise operators?**
+  : Bitwise operators perform the bitwise operation on the operands or in the case of NOT on a single operand.
+  : With logical it evaluates the operands values separately as truthy or falsey.
+
+```c
+&   // bitwise AND
+|   // bitwise inclusive OR
+^   // bitwise exclusive OR aka XOR
+<<  // bitwise left shift
+>>  // bitwise right shift
+~   // bitwise one's complement (unary)
+```
 
 ### Misc
 - **double quotes** enclosed word is a **character constant**.
