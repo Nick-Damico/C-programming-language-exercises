@@ -1,3 +1,16 @@
+/*
+ *  Author:     Nick D'Amico
+ *  Date:       9/20/22
+ *  Exercise:   1-4
+ *  Objective:  Write a program to print the corresponding Celsius to Fahrenheit
+ *              table.
+ * 
+ *  Solution: 
+ *      
+ *  Notes:  
+ *          
+ */
+
 # include <stdio.h>
 
 int main()

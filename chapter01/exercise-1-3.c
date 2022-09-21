@@ -1,3 +1,16 @@
+/*
+ *  Author:     Nick D'Amico
+ *  Date:       9/20/22
+ *  Exercise:   1-3
+ *  Objective:  Modify the temperature conversion program to print a heading
+ *              for the table.
+ * 
+ *  Solution: 
+ *      
+ *  Notes:  
+ *          
+ */
+
 #include <stdio.h>
 
 #define LOWER 0 /* lower temp of the range. */
