@@ -45,6 +45,11 @@ int main(void)
     * 
     *   Solution 1: Make a mask of 1's (n bits long), ^ XOR against x?
     *       Step 1: Make a mask n bits long of 1's.
+    *       Step 2: Push mask into position on x (p + 1 - n).
+    *       Step 3: Use XOR ( exclusive bitwise operator against 1's mask ).
+    *                   With XOR:
+    *                           1 ^ 1 == 0
+    *                           0 ^ 1 == 1
     *
     *   1. Make a  
     */
