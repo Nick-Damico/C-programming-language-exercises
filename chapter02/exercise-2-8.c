@@ -56,3 +56,8 @@ unsigned rightrot(unsigned short x, int n)
 
     return r_digits | l_digits;
 }
+
+unsigned rightrot_v2(unsigned short x, int n)
+{
+    return (x >> n) | (x & ~(~0 << n)) << (USHRT_LEN - n);
+}
