@@ -16,6 +16,8 @@ Working through most of the exercises outlined in the C Programming Language Boo
 - [x] Write an alternate version of `squeeze(s1, s2)`:  `/chapter02/exercise-2.4.c`
 - [x] Write a version of `any(s1, s2)`:  `/chapter02/exercise-2.5.c`
 - [x] Write a method `setbits(x,p,n,y)`:  `/chapter02/exercise-2.6.c`
+- [x] Write a function `invert(x,p,n)`:  `/chapter02/exercise-2.7.c`
+- [x] Write a function `rightrot(x, n)`:  `/chapter02/exercise-2.8.c`
 
 ## General Notes
 
