@@ -76,6 +76,18 @@
  * 
  *              Where did the last bit number go since there are no negative 0 representation?
  *              the number (1 0 0 0) is no longer negative zero, it is negative (-8).
+ * 
+ *              7..1
+ *                      (0 1 1 1)   == 7
+ *                      (0 1 1 0)   == 6
+ *                      (0 1 0 1)   == 5
+ *                      (0 1 0 0)   == 4
+ *                      (0 0 1 1)   == 3
+ *                      (0 0 1 0)   == 2
+ *                      (0 0 0 1)   == 1
+ *                      (0 0 0 0)   == 0
+ *              
+ *                      Why does (x &= (x - 1)) always remove the rightmost bit.
  *
  */
 
@@ -85,7 +97,7 @@ int bitcount(unsigned x);
 
 int main(void)
 {
-    int x = 7;    // Expected outcome to be 3.
+    int x = 6;    // Expected outcome to be 2.
 
     printf("%d\n", bitcount(x)); // Print result of bitcount.
     return 0;
@@ -93,20 +105,11 @@ int main(void)
 
 int bitcount(unsigned x)
 {
-    /*
-    *   x &= (x - 1)
-    *   x(6) (1 1 0)
-    *   x &= (6 - 1)
-    *   x(5) &= (5)
-    *   x(1 1 0) &= (1 0 1)
-    *   x == (1 0 0)
-    * 
-    *   16  8   4   2   0
-    * 
-    * 
-    */
-    int i;
-    for (i = 0; x != 0; x &= x -1)
+    int i = 0;
+    while(x != 0)
+    {
+        x &= (x - 1);
         ++i;
+    }
     return i;
 }
