@@ -17,6 +17,7 @@
 #define MAX_LEN 100
 // Coverts string t to s replacing newline and tabs with escape characters.
 void escape(char s[], char t[]);
+void unescape(char t[], char u[]);
 int readline(char s[]);
 
 int main(void)
@@ -24,12 +25,14 @@ int main(void)
     int i;
     char s[MAX_LEN];
     char t[MAX_LEN];
+    char u[MAX_LEN];
 
     while ((i = readline(s)) > 0)
     {
-        printf("length: %i\n", i);
-        // call escape(s, t);
-        // printf("%s\n", t);
+        escape(s, t);
+        printf("%s\n", t);
+        unescape(t, u);
+        printf("%s\n", u);
     }
     
     return 0; 
@@ -37,7 +40,57 @@ int main(void)
 
 void escape(char s[], char t[])
 {
-    
+    int i = 0;
+    int j = 0;
+    while (s[i] != '\0')
+    {
+        switch (s[i])
+        {
+        case '\t':
+            t[j] = '\\';
+            ++j;
+            t[j] = 't';
+            break;
+        case '\n':
+            t[j] = '\\';
+            ++j;
+            t[j] = 'n';
+            break;
+        default:
+            t[j] = s[i];
+            break;
+        }
+
+        ++i;
+        ++j;
+    }
+    t[j] = '\0';
+}
+
+void unescape(char t[], char u[])
+{
+    int i = 0;
+    int j = 0;
+    while (t[i] != '\0')
+    {
+        switch (t[i])
+        {
+        case '\\': 
+            if (t[i+1] == 'n')
+                u[j] = '\n';
+            else if (t[i+1] == 't')
+                u[j] = '\t';
+
+            ++i;
+            break;
+        default:
+            u[j] = t[i];
+            break;
+        }
+        ++i;
+        ++j;
+    }
+    u[j] = '\0';
 }
 
 int readline(char s[])
@@ -54,5 +107,5 @@ int readline(char s[])
     }
     s[i] = '\0';
     
-    return i-1; // Do not count the newline character;
+    return i;
 }
