@@ -1,8 +1,7 @@
 # C-programming-language-exercises
-Working through most of the exercises outlined in the C Programming Language Book.
-- Build a better understanding of programming fundatmentals.
-- Understand Pointers and memory management.
-- Gain experience with a *procedural programming* and *static type* checking language.
+This repository is a collection of exercises completed while working through the C Programming Language Book. 
+
+By tackling these exercises, the aim is to build a solid understanding of programming fundamentals and enhance knowledge in areas such as pointers and memory management. This project provides an opportunity to gain hands-on experience with a procedural programming language that utilizes static type checking.
 
 ## Exercises
 ### Chapter 01
